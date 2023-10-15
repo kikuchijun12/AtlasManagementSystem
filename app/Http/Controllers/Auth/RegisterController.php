@@ -59,6 +59,7 @@ class RegisterController extends Controller
 
     public function registerPost(Request $request)
     {
+        //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
         DB::beginTransaction();
         try{
             $old_year = $request->old_year;
@@ -80,7 +81,8 @@ class RegisterController extends Controller
                 'password' => bcrypt($request->password)
             ]);
             $user = User::findOrFail($user_get->id);
-            $user->subjects()->attach($subjects);
+            //役割を一つ結び付ける
+            $user->subjects()->attach($subjects);//エラー発生
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){

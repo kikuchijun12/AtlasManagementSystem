@@ -14,8 +14,9 @@ class Subjects extends Model
     protected $fillable = [
         'subject'
     ];
+    protected $table = 'subjects';//テーブル名を定義
 
     public function users(){
-        return;// リレーションの定義
+        return $this->belongsTo('App\Models\Users\User');//リレーションの定義
     }
 }
