@@ -41,5 +41,11 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
+  @if(session('error_message'))
+    <div class="alert alert-danger">
+        {{ session('error_message') }}
+    </div>
+@endif
+
 </body>
 </html>

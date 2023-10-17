@@ -67,7 +67,7 @@ class User extends Authenticatable
     }
 
     public function subjects(){
-        return $this->hasMany('App\Models\Users\subjects')
+        return $this->belongsToMany('App\Models\Users\subjects')
 ;// リレーションの定義
     }
 

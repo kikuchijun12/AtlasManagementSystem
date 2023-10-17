@@ -59,6 +59,7 @@ class RegisterController extends Controller
 
     public function registerPost(Request $request)
     {
+        //dd($request);
         //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
         DB::beginTransaction();
         try{
@@ -80,10 +81,12 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
+            //\Debugbar::info($user_get);
             $user = User::findOrFail($user_get->id);
+            //dd($user);
             //役割を一つ結び付ける
-            $user->subjects()->attach($subjects);//エラー発生
-            DB::commit();
+            $user->subjects()->attach($subjects);//エラー発生 多対多
+            DB::commit();//トランクザクション処理確定
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();
