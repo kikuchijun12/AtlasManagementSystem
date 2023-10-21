@@ -75,18 +75,12 @@ public function postEdit(Request $request)
 
     $validator = $this->validate($request, $rules, $messages);
 
-    // バリデーションに失敗した場合、バリデーションエラーが自動的にリダイレクトされ、エラーメッセージが表示されます。
-    // バリデーションエラーがある場合、以下のコードは実行されません。
-
     $post_id = $request->input('post_id');
 
-    // 更新処理
     Post::where('id', $post_id)->update([
         'post_title' => $request->post_title,
         'post' => $request->post_body,
     ]);
-
-    // 成功時の処理
     return redirect()->route('post.detail', ['id' => $post_id]);
 }
 
