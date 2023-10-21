@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Authenticated\BulletinBoard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Categories\MainCategory;
 use App\Models\Categories\SubCategory;
@@ -57,13 +59,36 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
-    public function postEdit(Request $request){
-        Post::where('id', $request->post_id)->update([
-            'post_title' => $request->post_title,
-            'post' => $request->post_body,
-        ]);
-        return redirect()->route('post.detail', ['id' => $request->post_id]);
-    }
+public function postEdit(Request $request)
+{
+    $rules = [
+        'post_title' => 'required|string|max:100',
+        'post_body' => 'required|string|max:5000',
+    ];
+
+    $messages = [
+        'post_title.required' => 'タイトルは必須です。',
+        'post_title.max' => 'タイトルは:max文字以下で指定してください。',
+        'post_body.required' => '投稿内容は必須です。',
+        'post_body.max' => '投稿内容は:max文字以下で指定してください。',
+    ];
+
+    $validator = $this->validate($request, $rules, $messages);
+
+    // バリデーションに失敗した場合、バリデーションエラーが自動的にリダイレクトされ、エラーメッセージが表示されます。
+    // バリデーションエラーがある場合、以下のコードは実行されません。
+
+    $post_id = $request->input('post_id');
+
+    // 更新処理
+    Post::where('id', $post_id)->update([
+        'post_title' => $request->post_title,
+        'post' => $request->post_body,
+    ]);
+
+    // 成功時の処理
+    return redirect()->route('post.detail', ['id' => $post_id]);
+}
 
     public function postDelete($id){
         Post::findOrFail($id)->delete();
