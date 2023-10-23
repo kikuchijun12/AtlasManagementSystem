@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\Auth\RegisterRequest;
+
 use DB;
 
 use App\Models\Users\Subjects;
@@ -57,36 +59,8 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(Request $request)
+    public function registerPost(RegisterRequest $request)
     {
- // バリデーションルールの定義
-    $rules = [
-        'over_name' => 'required|string|max:10',
-        'under_name' => 'required|string|max:10',
-        'over_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
-        'under_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
-        'mail_address' => 'required|min:5|max:100|email',
-        'sex' => 'required|in:1,2,3',
-        'birth_day' => 'after_or_equal:2000-01-01|before_or_equal:' . now()->format('Y-m-d'),
-        'role' => 'required|in:1,2,3,4',
-        'password' => 'required|confirmed|min:8|max:30',
-        'password_confirmation' => 'required|same:password'
-
-        // 他のフィールドについても適切なバリデーションルールを定義する
-        // ...
-    ];
-
-    // バリデーション実行
-    $validator = Validator::make($request->all(), $rules);
-
-    // バリデーションが失敗した場合
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
-        }
-
-
         //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
         DB::beginTransaction();
         try{

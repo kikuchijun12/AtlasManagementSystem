@@ -466,6 +466,7 @@ class ComposerStaticInite8fd1712de826aad53f5add106203fa9
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\Auth\\RegisterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/RegisterRequest.php',
         'App\\Http\\Requests\\BulletinBoard\\PostFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BulletinBoard/PostFormRequest.php',
         'App\\Models\\Calendars\\ReserveSettings' => __DIR__ . '/../..' . '/app/Models/Calendars/ReserveSettings.php',
         'App\\Models\\Categories\\MainCategory' => __DIR__ . '/../..' . '/app/Models/Categories/MainCategory.php',
