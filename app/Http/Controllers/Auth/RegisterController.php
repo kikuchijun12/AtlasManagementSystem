@@ -62,6 +62,7 @@ class RegisterController extends Controller
     public function registerPost(RegisterRequest $request)
     {
         //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
+        //dd($request);
         DB::beginTransaction();
         try{
             $old_year = $request->old_year;
@@ -70,7 +71,6 @@ class RegisterController extends Controller
             $data = $old_year . '-' . $old_month . '-' . $old_day;
             $birth_day = date('Y-m-d', strtotime($data));
             $subjects = $request->subject;
-
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,
@@ -86,6 +86,7 @@ class RegisterController extends Controller
             $user = User::findOrFail($user_get->id);
             //dd($user);
             //役割を一つ結び付ける
+            //dd($user);
             $user->subjects()->attach($subjects);//エラー発生 多対多
             DB::commit();//トランクザクション処理確定
             return view('auth.login.login');

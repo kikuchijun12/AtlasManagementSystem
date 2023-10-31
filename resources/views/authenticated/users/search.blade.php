@@ -45,13 +45,17 @@
       </div>
       <div>
         @if($user->role == 4)
-        <span>選択科目 :</span>
+          <span>選択科目 :</span>
+          @foreach($user->subjects as $subject)
+            <span>{{ $subject->subject }}</span>
+          @endforeach
         @endif
       </div>
     </div>
     @endforeach
   </div>
   <div class="search_area w-25 border">
+    <form action="{{ route('user.show') }}" method="get" id="userSearchRequest">
     <div class="">
       <div>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
@@ -102,6 +106,7 @@
       </div>
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
+    </form>
   </div>
 </div>
 @endsection

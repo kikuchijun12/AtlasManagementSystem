@@ -17,6 +17,6 @@ class Subjects extends Model
     protected $table = 'subjects';//テーブル名を定義
 
     public function users(){
-        return $this->belongsToMany('App\Models\Users\User');//リレーションの定義
+        return $this->belongsToMany('App\Models\Users\User','subject_users','subject_id','user_id');//リレーションの定義
     }
 }

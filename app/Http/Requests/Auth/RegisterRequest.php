@@ -30,7 +30,7 @@ class RegisterRequest extends FormRequest
             'under_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
             'mail_address' => 'required|min:5|max:100|email',
             'sex' => 'required|in:1,2,3',
-            'birth_day' => 'after_or_equal:2000-01-01|before_or_equal:' . now()->format('Y-m-d'),
+            'birth_day' => 'date|date_format:Y-m-d|before:2000-01-01|before_or_equal:' . now()->format('Y-m-d'),
             'role' => 'required|in:1,2,3,4',
             'password' => 'required|confirmed|min:8|max:30',
             'password_confirmation' => 'required|same:password'

@@ -13,6 +13,10 @@ class Like extends Model
         'like_post_id'
     ];
 
+    public function user(){
+        return $this->belongsTo('App\Models\Users\User');
+    }
+
     public function likeCounts($post_id){
         return $this->where('like_post_id', $post_id)->get()->count();
     }
