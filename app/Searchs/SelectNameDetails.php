@@ -17,6 +17,13 @@ class SelectNameDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
+
+    if(is_null($subjects)){
+      $subjects = ['1', '2', '3'];
+    }else{
+      $subjects = array($subjects);
+    }
+
     $users = User::with('subjects')
     ->where(function($q) use ($keyword){
       $q->Where('over_name', 'like', '%'.$keyword.'%')
