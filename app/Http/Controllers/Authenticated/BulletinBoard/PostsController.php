@@ -18,9 +18,9 @@ use Auth;
 class PostsController extends Controller
 {
     public function show(Request $request){
-        $posts = Post::with('user', 'postComments')->get();
+$posts = Post::with('user', 'postComments')->get();
+$like = new Like;
         $categories = MainCategory::get();
-        $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
             $posts = Post::with('user', 'postComments')
@@ -37,6 +37,17 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
         }
+
+
+        //11/15　追記　カウント
+        $posts->each(function ($post) use ($like) {
+        //いいね数をeachで格納
+        $post->likesCount = $like->likeCounts($post->id);
+                    });
+        //コメント
+        $posts->each(function ($post) use ($post_comment) {
+        $post->commentCounts = $post_comment->commentCounts($post->id);
+        });
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
@@ -93,6 +104,14 @@ public function postEdit(Request $request)
         return redirect()->route('post.input');
     }
 
+    public function subCategoryCreate(Request $request){
+        dd($request);
+        SubCategory::create([
+            'main_category_id' => $request->main_category_id,
+            'sub_category' => $request->sub_category_name]);
+        return redirect()->route('post.input');
+    }
+
     public function commentCreate(Request $request){
         PostComment::create([
             'post_id' => $request->post_id,
@@ -124,6 +143,11 @@ public function postEdit(Request $request)
         $like->like_user_id = $user_id;
         $like->like_post_id = $post_id;
         $like->save();
+
+// いいね追加後、該当の投稿のいいね数を更新
+    $post = Post::find($post_id);
+    $post->like_count = $post->likes()->count();
+    $post->save();
 
         return response()->json();
     }

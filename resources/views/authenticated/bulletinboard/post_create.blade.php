@@ -43,6 +43,18 @@
       <!-- サブカテゴリー追加 -->
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
     </div>
+    <div class="category_area mt-5 p-5">
+      <div class="">
+        <p class="m-0">サブカテゴリー</p>
+        <input type="text" class="w-100" name="sub_category_name" form="mainCategoryRequest">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+      </div>
+      <!-- サブカテゴリー追加 -->
+      <form action="{{ route('sub.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+    </div>
+
+        </div>
+
   </div>
   @endcan
 </div>

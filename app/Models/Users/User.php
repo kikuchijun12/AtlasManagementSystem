@@ -71,6 +71,10 @@ class User extends Authenticatable
 ;// リレーションの定義
     }
 
+    public function like() {
+        return $this->hasMany('App\Models\Posts\Like');
+    }
+
     // いいねしているかどうか
     public function is_Like($post_id){
         return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);

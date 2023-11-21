@@ -25,6 +25,7 @@ class Post extends Model
 
     public function subCategories(){
         // リレーションの定義
+        return $this->belongsToMany('App\Models\Categories\SubCategories');
     }
 
     // コメント数
