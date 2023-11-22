@@ -13,6 +13,7 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
+use App\Http\Requests\CommentRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -58,6 +59,7 @@ $like = new Like;
 
     public function postInput(){
         $main_categories = MainCategory::get();
+        //dd($main_categories);
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
@@ -112,7 +114,7 @@ public function postEdit(Request $request)
         return redirect()->route('post.input');
     }
 
-    public function commentCreate(Request $request){
+    public function commentCreate(CommentRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
