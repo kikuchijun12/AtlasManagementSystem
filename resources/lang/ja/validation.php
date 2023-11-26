@@ -165,6 +165,7 @@ return [
         'password' =>'パスワード',
         'post' => '投稿内容',
         'comment' => 'コメントの内容',
+        'sub_category_name' => 'そのサブカテゴリー',
     ],
 
 ];

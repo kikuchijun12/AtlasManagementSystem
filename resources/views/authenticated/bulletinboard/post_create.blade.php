@@ -51,8 +51,8 @@
     </div>
     <div class="category_area mt-5 p-5">
       <div class="">
-        @if ($errors->has('sub_category'))
-          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('sub_category')}}</li>
+        @if ($errors->has('sub_category_name'))
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('sub_category_name')}}</li>
         @endif
         @if ($errors->has('main_category_id'))
           <li style="font-size: 13px; color: #CC3300;">{{$errors->first('main_category_id')}}</li>
