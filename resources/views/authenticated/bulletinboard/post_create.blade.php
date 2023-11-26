@@ -38,6 +38,10 @@
       <div class="">
       </div>
       <!-- サブカテゴリー追加 -->
+              @if ($errors->has('main_category_name'))
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('main_category_name')}}</li>
+        @endif
+
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
                 <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
@@ -47,9 +51,15 @@
     </div>
     <div class="category_area mt-5 p-5">
       <div class="">
+        @if ($errors->has('sub_category'))
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('sub_category')}}</li>
+        @endif
+        @if ($errors->has('main_category_id'))
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('main_category_id')}}</li>
+        @endif
         <p class="m-0">サブカテゴリー</p>
         <!--上段-->
-        <select class="w-100" name="main_category_id" id="main_category_select">
+        <select class="w-100" name="main_category_id" id="main_category_select" form="subCategoryRequest">
       <option value="">メインカテゴリーを選択してください</option>
       @foreach($main_categories as $main_category)
         <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
@@ -57,9 +67,9 @@
     </select>
       </div>
       <!-- サブカテゴリー追加 -->
-      <form action="{{ route('sub.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}        <!--下段-->
-        <input type="text" class="w-100" name="sub_category_name" form="SubCategoryRequest">
-        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+      <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}        <!--下段-->
+        <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
 </form>
     </div>
 
