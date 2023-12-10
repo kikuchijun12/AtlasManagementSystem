@@ -86,7 +86,6 @@ class RegisterController extends Controller
             $user = User::findOrFail($user_get->id);
             //dd($user);
             //役割を一つ結び付ける
-            //dd($user);
             $user->subjects()->attach($subjects);//エラー発生 多対多
             DB::commit();//トランクザクション処理確定
             return view('auth.login.login');
