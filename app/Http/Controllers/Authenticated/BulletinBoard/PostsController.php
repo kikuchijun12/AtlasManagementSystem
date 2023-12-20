@@ -25,11 +25,10 @@ class PostsController extends Controller
     public function show(Request $request)
     {
         $posts = Post::with('user', 'postComments')->get();
-        //もともとある$postsからリレーションしたサブカテゴリーを取得したい
-        //dd($results);
+        $result = PostSubCategory::with('post_sub_categories')->get();
+        //dd($result);
         $like = new Like;
         $categories = MainCategory::with('subCategories')->get();
-        //dd($results);
         //11/28追加　投稿のサブカテゴリー表示
         $Sub_categories = SubCategory::get();
         //dd($Sub_categories);
