@@ -3,10 +3,7 @@
 namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
 use App\Models\Posts;
-=======
->>>>>>> 5969b92fa9151d5117741b904ef47933df39b742
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
