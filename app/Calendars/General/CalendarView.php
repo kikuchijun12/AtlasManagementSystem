@@ -39,6 +39,7 @@ class CalendarView
     $weeks = $this->getWeeks();
     foreach ($weeks as $week) {
       $html[] = '<tr class="' . $week->getClassName() . '">';
+
       $days = $week->getDays();
       foreach ($days as $day) {
         $startDay = $this->carbon->copy()->format("Y-m-01");
@@ -50,9 +51,8 @@ class CalendarView
           $html[] = '<td class="calendar-td ' . $day->getClassName() . '">';
         }
         $html[] = $day->render();
-        //予約可能かどうか
+
         if (in_array($day->everyDay(), $day->authReserveDay())) {
-          //日付が予約可能な日かどうかを確認
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
           if ($reservePart == 1) {
             $reservePart = "リモ1部";
@@ -73,19 +73,20 @@ class CalendarView
               $reservePart = "3部参加";
             }
           }
-          //$startDayが $day->everyDay() よりも小さいか等しい（過去または同じ日付である）かつ、 $toDayが $day->everyDay() よりも大きいか等しい（未来または同じ日付である）
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            //予約済みで過去の場合
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
+            $html[] =
+              '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
+
           //予約してない場合
         } else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
             $html[] = '受付終了';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
             $html[] = $day->selectPart($day->everyDay());
           }
