@@ -38,13 +38,13 @@ class CalendarWeekDay
 
     $html[] = '<div class="text-left">';
     if ($one_part) {
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['setting_reserve' => $one_part->setting_reserve, 'setting_part' => $one_part->setting_part]) . '">1部</a> ' . $one_part->users->count() . '</p>';
     }
     if ($two_part) {
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['setting_reserve' => $two_part->setting_reserve, 'setting_part' => $two_part->setting_part]) . '">2部</a> ' . $two_part->users->count() . '</p>';
     }
     if ($three_part) {
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['setting_reserve' => $three_part->setting_reserve, 'setting_part' => $three_part->setting_part]) . '">3部</a> ' . $three_part->users->count() . '</p>';
     }
     $html[] = '</div>';
 
@@ -55,6 +55,7 @@ class CalendarWeekDay
   function onePartFrame($day)
   {
     $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first();
+    dd($one_part_frame);
     if ($one_part_frame) {
       $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first()->limit_users;
     } else {
