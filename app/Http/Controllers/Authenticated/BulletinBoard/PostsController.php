@@ -174,11 +174,6 @@ class PostsController extends Controller
         $like->like_post_id = $post_id;
         $like->save();
 
-        // いいね追加後、該当の投稿のいいね数を更新
-        $post = Post::find($post_id);
-        $post->like_count = $post->likes()->count();
-        $post->save();
-
         return response()->json();
     }
 

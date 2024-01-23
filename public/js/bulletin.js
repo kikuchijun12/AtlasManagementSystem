@@ -1,13 +1,13 @@
 $(function () {
-  $('.main_categories').click(function () {
-    var category_id = $(this).attr('category_id');
-    $('.category_num' + category_id).slideToggle();
+  $('.main_categories').click(function () {　//ボタンをタップすると、
+    var category_id = $(this).attr('category_id');//'category_id'を追加
+    $('.category_num' + category_id).find('.sub_categories').slideToggle();
   });
 
   $(document).on('click', '.like_btn', function (e) {
     e.preventDefault();
-    $(this).addClass('un_like_btn');
-    $(this).removeClass('like_btn');
+    $(this).addClass('un_like_btn');//クラスを付与したい要素を対象
+    $(this).removeClass('like_btn');// like_btn
     var post_id = $(this).attr('post_id');
     var count = $('.like_counts' + post_id).text();
     var countInt = Number(count);
@@ -48,7 +48,7 @@ $(function () {
     });
   });
 
-  $('.edit-modal-open').on('click',function(){
+  $('.edit-modal-open').on('click', function () {
     $('.js-modal').fadeIn();
     var post_title = $(this).attr('post_title');
     var post_body = $(this).attr('post_body');
