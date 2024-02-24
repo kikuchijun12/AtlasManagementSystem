@@ -9,8 +9,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Http\Requests\Auth\RegisterRequest;
-
 use DB;
 
 use App\Models\Users\Subjects;
@@ -59,10 +57,8 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(RegisterRequest $request)
+    public function registerPost(Request $request)
     {
-        //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
-        //dd($request);
         DB::beginTransaction();
         try{
             $old_year = $request->old_year;
@@ -71,6 +67,7 @@ class RegisterController extends Controller
             $data = $old_year . '-' . $old_month . '-' . $old_day;
             $birth_day = date('Y-m-d', strtotime($data));
             $subjects = $request->subject;
+
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,
@@ -82,12 +79,9 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
-            //\Debugbar::info($user_get);
             $user = User::findOrFail($user_get->id);
-            //dd($user);
-            //役割を一つ結び付ける
-            $user->subjects()->attach($subjects);//エラー発生 多対多
-            DB::commit();//トランクザクション処理確定
+            $user->subjects()->attach($subjects);
+            DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();

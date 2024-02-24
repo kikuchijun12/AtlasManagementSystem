@@ -13,10 +13,6 @@ class Like extends Model
         'like_post_id'
     ];
 
-    public function user(){
-        return $this->belongsTo('App\Models\Users\User');
-    }
-//指定された投稿IDに対するいいねの総数を返すメソッド
     public function likeCounts($post_id){
         return $this->where('like_post_id', $post_id)->get()->count();
     }
