@@ -48,7 +48,8 @@ class LoginController extends Controller
 
     public function loginPost(Request $request)
     {
-        $userdata = $request -> only('mail_address', 'password');
+        $userdata = $request->only('mail_address', 'password');
+        //dd($userdata);
         if (Auth::attempt($userdata)) {
             return redirect('/top');
         }else{

@@ -8,16 +8,23 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <div class="subCategory-detile">
+        @if($post->subCategories->isNotEmpty())
+        <a>{{ $post->subCategories->first()->sub_category }}</a>
+        @endif
+      </div>
+      </li>
+
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <div class="mr-5">
-            <i class="fa fa-comment"></i><span class=""></span>
+            <i class="fa fa-comment"></i><span class="">{{ $post->postComments->count() }}</span>
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><a href="{{ route('post.show', ['id' => $post->id]) }}"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i></a><span class="like_counts{{ $post->id }}">{{ $post->likesCount }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likesCount }}</span></p>
             @endif
           </div>
         </div>
@@ -36,7 +43,14 @@
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span>
+              <span class="category_num{{ $category->id }}">
+                <ul class="sub_categories" style="display: none;"> @foreach($category->subCategories as $subCategory)
+                  <span><input type="submit" name="category_word" class="category_btn" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
+                    @endforeach
+                </ul>
+              </span>
+        </li>
         @endforeach
       </ul>
     </div>

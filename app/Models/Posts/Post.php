@@ -3,6 +3,8 @@
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Post extends Model
 {
@@ -15,20 +17,34 @@ class Post extends Model
         'post',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\Users\User');
     }
 
-    public function postComments(){
+    public function postComments()
+    {
         return $this->hasMany('App\Models\Posts\PostComment');
     }
 
-    public function subCategories(){
+    public function subCategories()
+    {
         // リレーションの定義
+        return $this->belongsToMany(
+            'App\Models\Categories\SubCategory',
+            'post_sub_categories',
+            'post_id',
+            'sub_category_id'
+        );
+    }
+    // コメント数
+    public function commentCounts($post_id)
+    {
+        return Post::with('postComments')->find($post_id)->postComments();
     }
 
-    // コメント数
-    public function commentCounts($post_id){
-        return Post::with('postComments')->find($post_id)->postComments();
+    public function subCategory()
+    {
+        return $this->belongsToMany(SubCategory::class, 'post_sub_categories', 'post_id', 'sub_category_id');
     }
 }
