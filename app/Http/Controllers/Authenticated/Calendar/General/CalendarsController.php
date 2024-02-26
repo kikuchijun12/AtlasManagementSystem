@@ -15,8 +15,9 @@ class CalendarsController extends Controller
 {
     public function show()
     {
+        $reserveSettings = $this->fetchReserveSettings();
         $calendar = new CalendarView(time());
-        return view('authenticated.calendar.general.calendar', compact('calendar'));
+        return view('authenticated.calendar.general.calendar', compact('calendar', 'reserveSettings'));
     }
 
     public function reserve(Request $request)
@@ -39,14 +40,19 @@ class CalendarsController extends Controller
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 
-    public function delete()
+    public function delete($id)
     {
-        \DB::table('posts')
-            ->where('id', $id)
-            ->delete();
+        $reserve_settings = ReserveSettingUser::findOrFail($id);
+        $reserve_settings->delete();
+        //reserve_setting_users::findOrFail($id)->delete();
 
-        return redirect('/top');
+        return redirect('/calendar');
+    }
 
-        Route::get('post/{id}/delete', 'PostsController@delete');
+    public function fetchReserveSettings()
+    {
+        // 予約設定を取得するロジックを記述する
+        // 例えば、データベースから予約設定を取得して返す
+        return ReserveSettings::all(); // 仮の例です
     }
 }

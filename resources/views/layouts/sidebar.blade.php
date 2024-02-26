@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,14 +20,29 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <div class="name-and-img-container">
+        <img src="image/190_b_hoso.png">
+        <p><a href="{{ route('top.show') }}">マイページ</a></p>
+      </div>
+      <div class="name-and-img-container">
+        <img src="image/22122264.png">
+        <p><a href="/logout">ログアウト</a></p>
+      </div>
+      <div class="name-and-img-container">
+        <img src="image/calendar_hoso.png">
+        <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      </div>
       @can('admin_only')
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+      <div class="name-and-img-container">
+        <img src="image/860_ch_h.png">
+        <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+      </div>
       <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
       @endcan
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
+      <div class="name-and-img-container">
+        <img src="image/1052_cm_h.png">
+        <p><a href="{{ route('post.show') }}">掲示板</a></p>
+      </div>
       <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
       @show
     </div>
@@ -40,4 +56,5 @@
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
 </body>
+
 </html>

@@ -11,31 +11,79 @@
   background: #ECF1F6;
 }
 
+body {
+  background-color: #03AAD2;
+}
+
 ul,
 li {
   list-style: none;
 }
 
+.atlas img {
+  position: relative;
+  top: 0px;
+  left: 600px;
+  height: 100px;
+}
+
+.login-main {
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px gray;
+  background-color: #fff;
+}
+
+.text-center {
+  margin-bottom: 15px
+}
+
+.text-center a {
+  margin-top: 10px;
+}
+
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 165px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+}
+
+.sidebar img {
+  width: 30px;
+  margin-left: 5px;
+}
+
+.name-and-img-container {
+  display: flex;
+  align-items: center;
 }
 
 .main-container {
   width: 100%;
 }
 
+.sidebar p {
+  margin-top: 8px;
+}
+
 .sidebar p a {
   color: #FFF;
+  font-size: 13px;
 }
 
 /* トップページ */
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  margin-top: 70px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.top-profile {
+  position: absolute;
+  top: 20px;
+  left: 170px;
 }
 
 /* スクール予約関連 */
@@ -106,6 +154,18 @@ li {
   width: 60%;
 }
 
+/* 2.25に追加 */
+.modal-body {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+}
+
+
 /* 掲示板 */
 .sub_categories {
   display: none;
@@ -160,6 +220,66 @@ li {
 .error_message {
   font-size: 12px;
   color: red;
+
+}
+
+.post-btn {
+  width: 100px;
+}
+
+/* 投稿ボタン */
+.post-btn a {
+  display: inline-block;
+  width: 250px;
+  /* 親要素の幅いっぱいに広げる */
+  background: #03AAD2;
+  border-radius: 8px;
+  font-size: 12px;
+  border: none;
+  line-height: 3;
+  color: #FFF;
+  text-align: center;
+  /* テキストを中央揃え */
+}
+
+/* 検索フォーム */
+.post-search-box {
+  display: flex;
+  align-items: center;
+  width: 260px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: -5px;
+  margin-top: 10px;
+}
+
+.post-input {
+  flex-grow: 1;
+  /* 残りのスペースを占有 */
+  padding: 5px;
+  /* 入力フォームの内側の余白 */
+  border: 1px solid #ccc;
+  /* 入力フォームの枠線 */
+  border-radius: 5px;
+  /* 入力フォームの角を丸める */
+  background: none;
+}
+
+.post-search-btn {
+  width: 100px;
+  /* 検索ボタンの幅 */
+  padding: 5px;
+  /* ボタンの内側の余白 */
+  border: none;
+  /* ボタンの枠線を削除 */
+  border-radius: 5px;
+  /* ボタンの角を丸める */
+  background-color: #03AAD2;
+  /* ボタンの背景色 */
+  color: white;
+  /* ボタンの文字色 */
+  cursor: pointer;
+  /* マウスカーソルをポインターに変更 */
 }
 
 /* 掲示板 詳細画面 */
@@ -239,8 +359,17 @@ li {
   border-radius: 5px;
   padding: 0 5px;
   border: none;
-  background: #999;
   color: #FFF;
+  width: 123px;
+  height: 30px;
+}
+
+.like_posts_btn {
+  background: #DB7093;
+}
+
+.my_posts_btn {
+  background: #FFA500;
 }
 
 .main_categories span,

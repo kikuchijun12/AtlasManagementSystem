@@ -78,12 +78,9 @@ class CalendarView
               '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
-            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 delete_date" data-toggle="modal" data-target="#deleteModal" data-reserve-date="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" data-reserve-part="' . $reservePart . '">';
-            $html[] = $reservePart;
-            $html[] = '</button>';
+            $html[] = '<button type="submit" class="delete_date p-0 w-75" setting_reserve="{{ $reserveSettings->setting_reserve }}" setting_part="{{ $reserveSettings->setting_part }}" id="{{ $reserveSettings->id }}" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
-
           //予約してない場合
         } else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {

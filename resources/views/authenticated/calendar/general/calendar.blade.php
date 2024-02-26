@@ -17,23 +17,32 @@
   </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">予約の削除</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<!-- モーダル本体 -->
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <div class="w-100">
+      <div class="modal-inner-title w-50 m-auto">
+        <input type="text" name="setting_reserve" placeholder="日" class="w-100">
+        <input type="submit" class="btn btn-primary d-block" value="編集">
       </div>
-      <div class="modal-body">
-        <p>上記の予約を削除してもよろしいですか？</p>
+      <div class="modal-inner-title w-50 m-auto">
+        <input type="text" name="setting_part" placeholder="タイトル" class="w-100">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-        <button type="button" class="btn btn-danger" id="confirmDelete">削除</button>
+      <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+        <textarea placeholder="部数" name="setting_part" class="w-100"></textarea>
       </div>
+      <!--@if(isset($reserve_settings))-->
+      <div class="w-50 m-auto edit-modal-btn d-flex">
+        <form action="{{ route('deleteParts', $reserveSettings->id) }}">
+          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+          <input type="hidden" class="edit-modal-hidden" name="id" value="">
+          <button type="submit">削除</button>
+        </form>
+      </div>
+      <!--@endif-->
     </div>
+    {{ csrf_field() }}
   </div>
 </div>
 @endsection
