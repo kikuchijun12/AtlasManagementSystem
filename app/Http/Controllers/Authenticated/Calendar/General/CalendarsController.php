@@ -15,9 +15,11 @@ class CalendarsController extends Controller
 {
     public function show()
     {
-        $reserveSettings = $this->fetchReserveSettings();
+        //$reserveSettings = $this->fetchReserveSettings();
+        //dd($reserveSettings);
+        //dd($reserveSettings);
         $calendar = new CalendarView(time());
-        return view('authenticated.calendar.general.calendar', compact('calendar', 'reserveSettings'));
+        return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
 
     public function reserve(Request $request)
@@ -49,10 +51,30 @@ class CalendarsController extends Controller
         return redirect('/calendar');
     }
 
-    public function fetchReserveSettings()
+    public function getReserveSettings(Request $request)
     {
         // 予約設定を取得するロジックを記述する
         // 例えば、データベースから予約設定を取得して返す
-        return ReserveSettings::all(); // 仮の例です
+        $id = $request->id;
+        dd($id);
+        $reserveDate = ReserveSettings::find($id)->setting_reserve;
+        $reservePart = ReserveSettings::find($id)->setting_part;
+        // 仮の例です
+
+        //SNS課題参考↓
+        //$profile = User::where('id', $id)
+        //->orderBy('created_at', 'desc')
+        //->first();
+
+        //$user_id = Auth::id();
+        //$post_id = $request->post_id;
+
+        //$like = new Like;
+
+        //$like->like_user_id = $user_id;
+        //$like->like_post_id = $post_id;
+        //$like->save();
+
+        return response()->json(['setting_reserve' => $reserveDate, 'setting_part' => $reservePart]);
     }
 }

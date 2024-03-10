@@ -55,7 +55,6 @@ class CalendarWeekDay
   function onePartFrame($day)
   {
     $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first();
-    dd($one_part_frame);
     if ($one_part_frame) {
       $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first()->limit_users;
     } else {

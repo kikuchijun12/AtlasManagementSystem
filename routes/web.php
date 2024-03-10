@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/calendar/{user_id}', 'CalendarsController@show')->name('calendar.general.show');
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
                 Route::delete('/delete/calendar/{id}', 'CalendarsController@delete')->name('deleteParts');
+                Route::get('getReserve/{id}/calendar', 'CalendarsController@getReserveSettings')->name('getReserveSettings');
             });
             Route::group(['middleware' => ['auth', 'can:admin_only']], function () {
                 Route::namespace('Admin')->group(function () {

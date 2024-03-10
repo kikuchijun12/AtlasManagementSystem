@@ -16,6 +16,7 @@ $(function () {
       method: "post",
       url: "/like/post/" + post_id,
       data: {
+        //post_idというキーに
         post_id: $(this).attr('post_id'),
       },
     }).done(function (res) {

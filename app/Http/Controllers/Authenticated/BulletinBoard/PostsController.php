@@ -25,7 +25,7 @@ class PostsController extends Controller
     public function show(Request $request)
     {
         $posts = Post::with('user', 'postComments')->get();
-        //dd($result);
+        //dd($posts);
         $like = new Like;
         $categories = MainCategory::with('subCategories')->get();
         //11/28追加　投稿のサブカテゴリー表示

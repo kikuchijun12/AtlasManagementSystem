@@ -282,6 +282,13 @@ li {
   /* マウスカーソルをポインターに変更 */
 }
 
+.search-sub {
+  display: flex;
+  flex-direction: row;
+  /* 横並びにする */
+  margin-top: 4px;
+}
+
 /* 掲示板 詳細画面 */
 .contributor {
   font-size: 12px;

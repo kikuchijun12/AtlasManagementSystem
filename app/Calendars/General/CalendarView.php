@@ -78,7 +78,7 @@ class CalendarView
               '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
-            $html[] = '<button type="submit" class="delete_date p-0 w-75" setting_reserve="{{ $reserveSettings->setting_reserve }}" setting_part="{{ $reserveSettings->setting_part }}" id="{{ $reserveSettings->id }}" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
+            $html[] = '<button type="submit" class="delete_date p-0 w-75" id="{{ $reserveDate->id }}" setting_reserve="{{ $reserveDate->setting_reserve}} " setting_part="{{ $reserveDate->setting_part}}" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
           //予約してない場合

@@ -21,28 +21,30 @@
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
-    <div class="w-100">
-      <div class="modal-inner-title w-50 m-auto">
-        <input type="text" name="setting_reserve" placeholder="日" class="w-100">
-        <input type="submit" class="btn btn-primary d-block" value="編集">
+    <form action="{{ route('post.edit') }}" method="post">
+      <div class="w-100">
+        <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+          <span class="reserve" name="setting_reserve">
+            <span class="reserve" name="setting_part">
+        </div>
+        <div class="w-50 m-auto edit-modal-btn d-flex">
+          <a class="js-modal-close btn btn-danger d-inline-block" href="#">閉じる</a>
+          <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
+          <button type="submit" class="btn btn-primary d-block">編集</button>
+        </div>
       </div>
-      <div class="modal-inner-title w-50 m-auto">
-        <input type="text" name="setting_part" placeholder="タイトル" class="w-100">
-      </div>
-      <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-        <textarea placeholder="部数" name="setting_part" class="w-100"></textarea>
-      </div>
-      <!--@if(isset($reserve_settings))-->
-      <div class="w-50 m-auto edit-modal-btn d-flex">
-        <form action="{{ route('deleteParts', $reserveSettings->id) }}">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-          <input type="hidden" class="edit-modal-hidden" name="id" value="">
-          <button type="submit">削除</button>
-        </form>
-      </div>
-      <!--@endif-->
+      {{ csrf_field() }}
+    </form>
+    <!-- 削除ボタン -->
+    @if(isset($reserve_settings))
+    <div class="w-50 m-auto edit-modal-btn d-flex">
+      <form action="{{ route('deleteParts', $reserveSettings->id) }}" method="post">
+        @csrf
+        <input type="hidden" class="edit-modal-hidden" name="id" value="{{ $reserveSettings->id }}">
+        <button type="submit" class="btn btn-danger">削除</button>
+      </form>
     </div>
-    {{ csrf_field() }}
+    @endif
   </div>
 </div>
 @endsection
