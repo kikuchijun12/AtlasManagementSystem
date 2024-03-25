@@ -18,8 +18,9 @@ class CalendarsController extends Controller
         //$reserveSettings = $this->fetchReserveSettings();
         //dd($reserveSettings);
         //dd($reserveSettings);
+        $reserveDate = ReserveSettings::get();
         $calendar = new CalendarView(time());
-        return view('authenticated.calendar.general.calendar', compact('calendar'));
+        return view('authenticated.calendar.general.calendar', compact('calendar', 'reserveDate'));
     }
 
     public function reserve(Request $request)

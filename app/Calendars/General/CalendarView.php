@@ -53,7 +53,10 @@ class CalendarView
         $html[] = $day->render();
 
         if (in_array($day->everyDay(), $day->authReserveDay())) {
+          $reserveDate = $day->authReserveDate($day->everyDay())->first();
+
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+
           if ($reservePart == 1) {
             $reservePart = "リモ1部";
             if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
@@ -78,7 +81,7 @@ class CalendarView
               '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
-            $html[] = '<button type="submit" class="delete_date p-0 w-75" data-id="{{ $reserveDate->id }}" data-setting_reserve="{{ $reserveDate->setting_reserve}} " data-setting_part="{{ $reserveDate->setting_part}}" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
+            $html[] = '<button type="submit" class="delete_date p-0 w-75" data-id="' . $reserveDate->id . '" data-setting_reserve="' . $reserveDate->setting_reserve . ' " data-setting_part="' . $reserveDate->setting_part . '" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
           //予約してない場合

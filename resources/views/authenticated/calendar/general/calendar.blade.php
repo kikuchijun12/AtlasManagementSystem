@@ -28,23 +28,13 @@
             <span class="reserve" name="setting_part">
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="#">閉じる</a>
-          <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <button type="submit" class="btn btn-primary d-block">編集</button>
+          <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
+          <input type="hidden" class="edit-modal-hidden" name="id" value="">
+          <button type="submit" class="btn btn-danger d-block">キャンセル</button>
         </div>
       </div>
       {{ csrf_field() }}
     </form>
-    <!-- 削除ボタン -->
-    @if(isset($reserve_settings))
-    <div class="w-50 m-auto edit-modal-btn d-flex">
-      <form action="{{ route('deleteParts', $reserveSettings->id) }}" method="post">
-        @csrf
-        <input type="hidden" class="edit-modal-hidden" name="id" value="{{ $reserveSettings->id }}">
-        <button type="submit" class="btn btn-danger">削除</button>
-      </form>
-    </div>
-    @endif
   </div>
 </div>
 @endsection
