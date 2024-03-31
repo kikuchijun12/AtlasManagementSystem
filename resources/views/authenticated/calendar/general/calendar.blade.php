@@ -30,7 +30,6 @@
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="id" value="">
-          <button type="submit" class="btn btn-danger d-block">キャンセル</button>
         </div>
       </div>
       {{ csrf_field() }}

@@ -37,7 +37,9 @@
         <img src="image/860_ch_h.png">
         <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
       </div>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <div class="name-and-img-container">
+        <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      </div>
       @endcan
       <div class="name-and-img-container">
         <img src="image/1052_cm_h.png">
