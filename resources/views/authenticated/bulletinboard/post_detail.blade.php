@@ -22,8 +22,8 @@
           </p>
           <span class="ml-5">{{ $post->created_at }}</span>
         </div>
-        <div class="detsail_post_title">{{ $post->post_title }}</div>
-        <div class="mt-3 detsail_post">{{ $post->post }}</div>
+        <div class="detail_post_title">{{ $post->post_title }}</div>
+        <div class="mt-3 detail_post">{{ $post->post }}</div>
       </div>
       <div class="p-3">
         <div class="comment_container">
@@ -45,7 +45,7 @@
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
         @if ($errors->has('comment'))
-          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('comment')}}</li>
+        <li style="font-size: 13px; color: #CC3300;">{{$errors->first('comment')}}</li>
         @endif
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
