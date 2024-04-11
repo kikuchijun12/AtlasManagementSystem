@@ -30,7 +30,10 @@
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="id" value="">
+<<<<<<< HEAD
           <a href="{{ route('deleteParts', ['id' => $reserveDate->first()->id]) }}" class="btn btn-danger d-block">キャンセル</a>
+=======
+>>>>>>> origin/main
         </div>
       </div>
       {{ csrf_field() }}
