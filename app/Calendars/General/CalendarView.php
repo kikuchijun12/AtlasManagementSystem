@@ -54,7 +54,6 @@ class CalendarView
 
         if (in_array($day->everyDay(), $day->authReserveDay())) {
           $reserveDate = $day->authReserveDate($day->everyDay())->first();
-
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
 
           if ($reservePart == 1) {

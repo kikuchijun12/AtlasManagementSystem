@@ -14,18 +14,19 @@ use DB;
 
 class CalendarsController extends Controller
 {
-    public function show()
+    public function show($user_id)
     {
-        //$reserveSettings = $this->fetchReserveSettings();
-        //dd($reserveSettings);
         //dd($reserveSettings);
         $reserveDate = ReserveSettings::get();
+        //$reserveSettingUser = ReserveSettingUser::get();
+        //dd($reserveSettingUser);
         $calendar = new CalendarView(time());
         return view('authenticated.calendar.general.calendar', compact('calendar', 'reserveDate'));
     }
 
     public function reserve(Request $request)
     {
+        //dd($request);
         DB::beginTransaction();
         try {
             $getPart = $request->getPart;
@@ -46,34 +47,48 @@ class CalendarsController extends Controller
 
     public function delete($id)
     {
-        ReserveSettingUser::findOrFail($id)->delete();
-        return redirect()->route('calendar.general.show');
+        //dd($id);
+        // ReserveSettingUser モデルから指定されたIDのレコードを取得
+        $reserveSettingUser = ReserveSettingUser::find($id);
+        dd($reserveSettingUser);
+        //$reserveSettingUser = ReserveSettingUser::where("id", $id)->first();
+
+        // レコードが存在しない場合は警告を出力してリダイレクト
+        if (!$reserveSettingUser) {
+            return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+        }
+
+        // レコードを削除
+        $reserveSettingUser->delete();
+
+        // 正常に削除された場合はリダイレクト
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 
-    public function getReserveSettings(Request $request)
-    {
-        // 予約設定を取得するロジックを記述する
-        // 例えば、データベースから予約設定を取得して返す
-        $id = $request->id;
-        dd($id);
-        $reserveDate = ReserveSettings::find($id)->setting_reserve;
-        $reservePart = ReserveSettings::find($id)->setting_part;
-        // 仮の例です
+    ///public function getReserveSettings(Request $request)
+    //{
+    // 予約設定を取得するロジックを記述する
+    // 例えば、データベースから予約設定を取得して返す
+    //$id = $request->id;
+    //ddd($id);
+    //$reserveDate = ReserveSettings::find($id)->setting_reserve;
+    //$reservePart = ReserveSettings::find($id)->setting_part;
+    // 仮の例です
 
-        //SNS課題参考↓
-        //$profile = User::where('id', $id)
-        //->orderBy('created_at', 'desc')
-        //->first();
+    //SNS課題参考↓
+    //$profile = User::where('id', $id)
+    //->orderBy('created_at', 'desc')
+    //->first();
 
-        //$user_id = Auth::id();
-        //$post_id = $request->post_id;
+    //$user_id = Auth::id();
+    //$post_id = $request->post_id;
 
-        //$like = new Like;
+    //$like = new Like;
 
-        //$like->like_user_id = $user_id;
-        //$like->like_post_id = $post_id;
-        //$like->save();
+    //$like->like_user_id = $user_id;
+    //$like->like_post_id = $post_id;
+    //$like->save();
 
-        return response()->json(['setting_reserve' => $reserveDate, 'setting_part' => $reservePart]);
-    }
+    //return response()->json(['setting_reserve' => $reserveDate, //'setting_part' => $reservePart]);
+    //}
 }
