@@ -54,9 +54,7 @@ class CalendarView
 
         if (in_array($day->everyDay(), $day->authReserveDay())) {
           $reserveDate = $day->authReserveDate($day->everyDay())->first();
-
-          $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
-
+          $reservePart = $reserveDate->setting_part;
           if ($reservePart == 1) {
             $reservePart = "リモ1部";
             if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
@@ -77,18 +75,22 @@ class CalendarView
             }
           }
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            $html[] =
-              '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
+            $html[] = '<p class="m-auto p-0 w-75 reservation-item" style="font-size:12px">' . $reservePart . '</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts">';
           } else {
-            $html[] = '<button type="submit" class="delete_date p-0 w-75" data-id="' . $reserveDate->id . '" data-setting_reserve="' . $reserveDate->setting_reserve . ' " data-setting_part="' . $reserveDate->setting_part . '" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
+            //未来の時
+            $html[] = '<div class="reservation-item">';
+            $html[] = '<button type="submit" class="delete_date p-0 w-75" data-id="' . $reserveDate->id . '" data-setting_reserve="' . $reserveDate->setting_reserve . '" data-setting_part="' . $reserveDate->setting_part . '" name="delete_date"  style="font-size:12px" reserveDate="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" reservePart="' . $reservePart . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts">';
           }
           //予約してない場合
         } else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
             $html[] = '受付終了';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts">';
           } else {
             $html[] = $day->selectPart($day->everyDay());
           }

@@ -58,6 +58,8 @@ class CalendarWeekDay
     //残りの枠数を表示
 
     $html = [];
+    $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts">';
+
     $html[] = '<select name="getPart[]" class="border-primary" style="width:70px; border-radius:5px;" form="reserveParts">';
     $html[] = '<option value="" selected></option>';
     if ($one_part_frame == "0") {
@@ -81,7 +83,8 @@ class CalendarWeekDay
 
   function getDate()
   {
-    return '<input type="hidden" value="' . $this->carbon->format('Y-m-d') . '" name="getData[]" form="reserveParts">';
+    $date = $this->carbon->format('Y-m-d');
+    return '<input type="hidden" value="' . $date . '" name="getDate[]" form="reserveParts">' . '<input type="hidden" value="' . $date . '" name="getDate[]" form="deleteParts">';
   }
 
   function everyDay()
