@@ -23,13 +23,25 @@
     <div class="w-100">
       <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
         <span class="reserve" name="setting_reserve">
+<<<<<<< HEAD
           <span class="reserve2" name="setting_part">
+=======
+          <span class="reserve" name="setting_part">
+>>>>>>> origin/main
       </div>
       <div class="w-50 m-auto edit-modal-btn d-flex">
         <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
         <input type="hidden" class="edit-modal-hidden" name="id" value="">
+<<<<<<< HEAD
         @csrf
         <input type="submit" class="cancel" name="getPart[]" value="キャンセル">
+=======
+        <form id="deleteForm-{{ $reserveDate->first()->id }}" action="{{ route('deleteParts', ['id' => $reserveDate->first()->id]) }}" method="post">
+          @csrf
+          <input type="hidden" id="deleteId" name="delete-id" value="{{ $reserveDate->first()->id }}">
+          <button type="button" onclick="submitForm('{{ $reserveDate->first()->id }}')" class="btn btn-danger d-block">キャンセル</button>
+        </form>
+>>>>>>> origin/main
       </div>
     </div>
   </div>

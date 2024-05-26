@@ -26,6 +26,7 @@ class CalendarsController extends Controller
 
     public function reserve(Request $request)
     {
+        //dd($request);
         DB::beginTransaction();
         try {
             dd($request);
