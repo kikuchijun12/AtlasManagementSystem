@@ -47,6 +47,7 @@ class CalendarsController extends Controller
     }
     public function delete(Request $request)
     {
+
         try {
             //dd($request->all());
 
