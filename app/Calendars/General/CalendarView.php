@@ -7,7 +7,6 @@ use Auth;
 
 class CalendarView
 {
-
   private $carbon;
   function __construct($date)
   {
