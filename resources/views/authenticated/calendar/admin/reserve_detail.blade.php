@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
-  <div class="w-50 m-auto h-75">
+  <div class="reserve_detail w-75 m-auto h-75">
     @foreach ($reservePersons as $reservePersons)
     <p><span>{{ $reservePersons->setting_reserve}}日</span><span class="ml-3">
         {{ $reservePersons->setting_part }}部

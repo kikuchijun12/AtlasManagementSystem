@@ -64,7 +64,7 @@ class RegisterController extends Controller
         //トランザクションを自分で開始し、ロールバックとコミットを完全にコントロールしたい場合
         //dd($request);
         DB::beginTransaction();
-        try{
+        try {
             $old_year = $request->old_year;
             $old_month = $request->old_month;
             $old_day = $request->old_day;
@@ -86,10 +86,10 @@ class RegisterController extends Controller
             $user = User::findOrFail($user_get->id);
             //dd($user);
             //役割を一つ結び付ける
-            $user->subjects()->attach($subjects);//エラー発生 多対多
-            DB::commit();//トランクザクション処理確定
+            $user->subjects()->attach($subjects); //エラー発生 多対多
+            DB::commit(); //トランクザクション処理確定
             return view('auth.login.login');
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('loginView');
         }

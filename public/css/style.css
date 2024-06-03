@@ -35,13 +35,42 @@ li {
   background-color: #fff;
 }
 
-.text-center {
-  margin-bottom: 15px
-}
+.reserve_detail {}
+
+.text-center {}
+
+.text-center th {}
+
 
 .text-center a {
   margin-top: 10px;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+
+
+
+
+
+
 
 /* フォームの文字の太さ */
 .bold-label {
@@ -146,6 +175,13 @@ li {
   width: 70%;
 }
 
+.delete_date {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-radius: 5px;
+}
+
 /* モーダル */
 .modal {
   display: none;
@@ -183,6 +219,10 @@ li {
   padding: 20px;
 }
 
+/* 閉じるボタン */
+.js-modal-close {
+  padding: 5px 25px !important;
+}
 
 /* 掲示板 */
 .sub_categories {

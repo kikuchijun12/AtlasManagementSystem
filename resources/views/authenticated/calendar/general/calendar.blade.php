@@ -20,18 +20,23 @@
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
-    <div class="w-100">
-      <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-        <span class="reserve" name="setting_reserve">
-          <span class="reserve2" name="setting_part">
+    <form action="{{ route('deleteParts') }}" method="post">
+      @csrf
+      <div class="w-100">
+        <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+          <span class="reserve" name="setting_reserve">
+            <span class="reserve2" name="setting_part">
+        </div>
+        <div class="w-50 m-auto edit-modal-btn d-flex">
+          <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
+          <input type="hidden" class="edit-modal-hidden" name="id" value="">
+          <input type="submit" class="cancel btn btn-danger" name="getPart[]" value="キャンセル">
+        </div>
       </div>
-      <div class="w-50 m-auto edit-modal-btn d-flex">
-        <a class="js-modal-close btn btn-primary d-inline-block" href="#">閉じる</a>
-        <input type="hidden" class="edit-modal-hidden" name="id" value="">
-        @csrf
-        <input type="submit" class="cancel" name="getPart[]" value="キャンセル">
-      </div>
-    </div>
+      {{-- 送信用 --}}
+      <input type="hidden" name="reserve_date" class="reserve_date" value="">{{-- 追加 --}}
+      <input type="hidden" name="reserve_part" class="reserve_part" value="">{{-- 追加 --}}
+    </form>
   </div>
 </div>
 @endsection

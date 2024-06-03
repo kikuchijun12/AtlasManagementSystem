@@ -16,20 +16,15 @@ class CalendarsController extends Controller
 {
     public function show($user_id)
     {
-        //dd($reserveSettings);
         $reserveDate = ReserveSettings::get();
-        //$reserveSettingUser = ReserveSettingUser::get();
-        //dd($reserveSettingUser);
         $calendar = new CalendarView(time());
         return view('authenticated.calendar.general.calendar', compact('calendar', 'reserveDate'));
     }
 
     public function reserve(Request $request)
     {
-        //dd($request);
         DB::beginTransaction();
         try {
-            dd($request);
             $getPart = $request->getPart;
             $getDate = $request->getDate;
             //dd($getDate);
@@ -48,19 +43,12 @@ class CalendarsController extends Controller
     public function delete(Request $request)
     {
         try {
-            //dd($request->all());
-
-            $getDate = $request->input('getDate', []);
-            $getPart = $request->input('getPart', []);
-
-            // デバッグ用のダンプ
-            dd($getDate, $getPart);
-            $reserveDays = array_filter(array_combine($getDate, $getPart));
-            foreach ($reserveDays as $key => $value) {
-                $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
-                $reserve_settings->increment('limit_users');
-                $reserve_settings->users()->detach(Auth::id());
-            }
+            // input type="hidden"で送った値を取得
+            $getDate = $request->input('reserve_date'); //修正
+            $getPart = $request->input('reserve_part'); //修正
+            $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
+            $reserve_settings->increment('limit_users');
+            $reserve_settings->users()->detach(Auth::id());
         } catch (\Exception $e) {
             DB::rollback();
         }
