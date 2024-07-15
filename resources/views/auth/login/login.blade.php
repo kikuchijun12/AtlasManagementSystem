@@ -31,7 +31,7 @@
             <input type="password" class="w-100 border-0" name="password">
           </div>
         </div>
-        <div class="text-right m-3">
+        <div class="rogin m-3">
           <input type="submit" class="btn btn-primary" value="ログイン">
         </div>
         <div class="text-center">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -13,7 +14,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,6 +22,28 @@ class RegisterRequest extends FormRequest
      *
      * @return array
      */
+
+    public function getValidatorInstance()
+    {
+        //生年月日をまとめる為のメソッド
+        $format = '%04d-%02d-%02d';
+        //$format = 'Y-m-d';
+        $old_year = $this->input('old_year');
+        $old_month = $this->input('old_month');
+        $old_day = $this->input('old_day');
+
+        $birth_day = sprintf($format, $old_year, $old_month, $old_day);
+
+        //dd($birth_day);
+
+        $this->merge(['birth_day' => $birth_day]);
+        //birth_day フィールドをリクエストデータに追加
+        //override（内容を上書きするために使用）
+        \Log::debug($this->birth_day);
+        dd($this->all()); // これでリクエストデータを確認
+
+        return parent::getValidatorInstance();
+    }
     public function rules()
     {
         return [
@@ -30,10 +53,15 @@ class RegisterRequest extends FormRequest
             'under_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
             'mail_address' => 'required|min:5|max:100|email',
             'sex' => 'required|in:1,2,3',
-            'birth_day' => 'after_or_equal:2000-01-01|before_or_equal:' . now()->format('Y-m-d'),
+            'old_year' => 'between:2000,2010',
+            //'birth_day'自体が認識されていない可能性
+            'birth_day' => 'required|date|before:today|date|after:2000-01-01',
             'role' => 'required|in:1,2,3,4',
             'password' => 'required|confirmed|min:8|max:30',
             'password_confirmation' => 'required|same:password'
         ];
     }
+
+
+    //
 }

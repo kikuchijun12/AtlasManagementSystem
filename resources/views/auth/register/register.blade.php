@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,15 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
+
 <body>
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-25 vh-75 border p-3">
         @if ($errors->has('over_name'))
-          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('over_name')}}</li>
+        <li style="font-size: 13px; color: #CC3300;">{{$errors->first('over_name')}}</li>
         @endif
         @if ($errors->has('under_name'))
-          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('under_name')}}</li>
+        <li style="font-size: 13px; color: #CC3300;">{{$errors->first('under_name')}}</li>
         @endif
 
         <div class="register_form">
@@ -60,9 +62,9 @@
             </div>
           </div>
           <div class="mt-3">
-          @if ($errors->has('mail_address'))
+            @if ($errors->has('mail_address'))
             <li style="font-size: 13px; color: #CC3300;">{{$errors->first('mail_address')}}</li>
-          @endif
+            @endif
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
@@ -70,9 +72,9 @@
           </div>
         </div>
         <div class="mt-3">
-            @if ($errors->has('sex'))
-            <li style="font-size: 13px; color: #CC3300;">{{$errors->first('sex')}}</li>
-            @endif
+          @if ($errors->has('sex'))
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('sex')}}</li>
+          @endif
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
           <input type="radio" name="sex" class="sex" value="2">
@@ -162,7 +164,10 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
-          <label style="font-size:13px">月</label>
+          <label style="font-size:13px">日</label>
+          @error('birth_day')
+          <li style="font-size: 13px; color: #CC3300;">{{$message}}</li>
+          @enderror
         </div>
         <div class="mt-3">
           @if ($errors->has('role'))
@@ -189,7 +194,7 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('password'))
-            <li style="font-size: 13px; color: #CC3300;">{{$errors->first('password')}}</li>
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('password')}}</li>
           @endif
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
@@ -198,7 +203,7 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('password_confirmation'))
-           <li style="font-size: 13px; color: #CC3300;">{{$errors->first('password_confirmation')}}</li>
+          <li style="font-size: 13px; color: #CC3300;">{{$errors->first('password_confirmation')}}</li>
           @endif
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
@@ -219,4 +224,5 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
 </body>
+
 </html>

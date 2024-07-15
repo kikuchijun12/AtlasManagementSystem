@@ -154,15 +154,18 @@ return [
     */
 
     'attributes' => [
-        'over_name' =>'苗字',
-        'under_name' =>'名前',
-        'over_name_kana'=> 'フリガナ(苗字)',
+        'over_name' => '苗字',
+        'under_name' => '名前',
+        'over_name_kana' => 'フリガナ(苗字)',
         'under_name_kana' => 'フリガナ(名前)',
         'mail_address' => 'メールアドレス',
         'sex' => '性別',
+        'old_year' => '年',
+        'old_month' => '月',
+        'old_day' => '日',
         'birth_day' => '生年月日',
         'role' => '役職',
-        'password' =>'パスワード',
+        'password' => 'パスワード',
         'post' => '投稿内容',
         'comment' => 'コメントの内容',
         'sub_category_name' => 'そのサブカテゴリー',

@@ -21,20 +21,20 @@
     <div class="sidebar">
       @section('sidebar')
       <div class="name-and-img-container">
-        <img src="image/190_b_hoso.png">
+        <img src="{{ asset('./image/190_b_hoso.png') }}">
         <p><a href="{{ route('top.show') }}">マイページ</a></p>
       </div>
       <div class="name-and-img-container">
-        <img src="image/22122264.png">
+        <img src="{{ asset('./image/22122264.png') }}">
         <p><a href="/logout">ログアウト</a></p>
       </div>
       <div class="name-and-img-container">
-        <img src="image/calendar_hoso.png">
+        <img src="{{ asset('./image/calendar_hoso.png') }}">
         <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
       </div>
       @can('admin_only')
       <div class="name-and-img-container">
-        <img src="image/860_ch_h.png">
+        <img src="{{ asset('./image/860_ch_h.png') }}">
         <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
       </div>
       <div class="name-and-img-container">
@@ -42,7 +42,7 @@
       </div>
       @endcan
       <div class="name-and-img-container">
-        <img src="image/1052_cm_h.png">
+        <img src="{{ asset('./image/1052_cm_h.png') }}">
         <p><a href="{{ route('post.show') }}">掲示板</a></p>
       </div>
       <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>

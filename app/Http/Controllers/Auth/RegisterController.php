@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\RegisterRequest;
+use Carbon\Carbon;
 
 use DB;
 
@@ -65,12 +66,17 @@ class RegisterController extends Controller
         //dd($request);
         DB::beginTransaction();
         try {
+            $format = '%04d-%02d-%02d';
+            //$format = 'Y-m-d';
             $old_year = $request->old_year;
             $old_month = $request->old_month;
             $old_day = $request->old_day;
-            $data = $old_year . '-' . $old_month . '-' . $old_day;
-            $birth_day = date('Y-m-d', strtotime($data));
+            //くっつけてからバリデーション←ルールの前に行う
+            $birth_day = sprintf($format, $old_year, $old_month, $old_day);
+            dd($birth_day);
+            //dd($birth_day);
             $subjects = $request->subject;
+
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,

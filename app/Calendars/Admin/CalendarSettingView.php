@@ -45,7 +45,7 @@ class CalendarSettingView
         $toDay = $this->carbon->format("Y-m-d");
 
         if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-          $html[] = '<td class="past-day border">';
+          $html[] = '<td class="confirmation-past-day border">';
         } else {
           $html[] = '<td class="border ' . $day->getClassName() . '">';
         }
