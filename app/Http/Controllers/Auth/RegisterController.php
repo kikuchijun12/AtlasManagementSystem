@@ -73,7 +73,6 @@ class RegisterController extends Controller
             $old_day = $request->old_day;
             //くっつけてからバリデーション←ルールの前に行う
             $birth_day = sprintf($format, $old_year, $old_month, $old_day);
-            dd($birth_day);
             //dd($birth_day);
             $subjects = $request->subject;
 
