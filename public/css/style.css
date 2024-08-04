@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #03AAD2;
+  background: #ECF1F6 !important;
 }
 
 ul,
@@ -32,11 +32,11 @@ li {
   position: absolute;
   top: 180px;
   border-radius: 8px;
-  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.35);
   background-color: #fff;
   padding: 15px 0px 15px;
   /* 内部余白を追加 */
-  width: 30%;
+  width: 450px;
   /* 幅を広げる */
   height: auto;
   /* 高さは自動調整 */
@@ -44,27 +44,95 @@ li {
 
 /* 新規登録 */
 .register_form {
+  margin-top: -47px;
+  margin-left: -80px;
   position: relative;
   top: 30px;
   border-radius: 8px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
   background-color: #fff;
   padding: 15px 20px 15px;
-  width: 100%;
+  width: 150%;
   height: auto;
 }
 
+.login-border-bottom {
+  border-bottom: 2px solid #33CCFF !important;
+  width: 370px;
+}
+
+.over_name {
+  margin-left: 87px;
+}
+
+/*パスワード欄*/
+.common {
+  .margin-left: 30px !important;
+}
+
+/* 各ラベル */
 .register_form label {
+  text-align: justify;
   font-weight: bold;
 
 }
 
+/* 例: 生年月日ラベル */
+.register_form .common-label {
+  margin-left: 35px !important;
+}
+
+.register_form .under_name-label {
+  margin-left: 10px !important;
+}
+
+.register_form .role-label {
+  margin-left: 5px !important;
+}
+
 .birthdate-container {
+  margin-top: 10px;
   text-align: center;
+}
+
+.birthdate-container a {
+  margin: 0px 10px 10px 0px;
+}
+
+.rogin-btn1 {
+  margin-bottom: -5px;
+}
+
+.rogin-btn1 a {
+  margin-bottom: 10px;
+}
+
+.register_form .rogin-item {
+  margin-top: 10px !important;
 }
 
 div.border-bottom.border-primary {
   border-bottom: 2px solid #33CCFF !important;
+  width: 370px;
+  margin-left: 40px;
+}
+
+div.name-border {
+  width: 160px !important;
+}
+
+.under_name-border {
+  width: 170px !important;
+  margin-left: 10px !important;
+}
+
+input [name="mail_address"] {
+  width: 200px;
+}
+
+/*姓*/
+.register_form input[name="over_name"] {
+  margin-right: 10px;
 }
 
 .border-bottom {}
@@ -74,7 +142,7 @@ select.old_year {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 70px;
+  width: 100px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -88,7 +156,7 @@ select.old_month {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 70px;
+  width: 100px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -102,7 +170,7 @@ select.old_day {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 70px;
+  width: 100px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -112,16 +180,17 @@ select.old_day {
 }
 
 .rogin-register input[type="submit"] {
-  margin-right: -30px !important;
-  margin-top: 5px !important;
+  margin-right: 15px !important;
+  margin-top: -50px !important;
 }
 
 .reserve_detail {}
 
 .text-center {
+  font-size: 12px;
   width: 100%;
   height: auto;
-
+  margin-top: -10px;
 }
 
 .text-center th {}
@@ -140,20 +209,20 @@ select.old_day {
 .table th,
 .table td {
   border: 1px solid #ddd;
-  padding: 0.5rem 0.75px 0px !important;
+  padding: 1rem 0.75px 0px !important;
 }
 
 .reserve-past-day {
   border: 1px solid #ddd;
   padding: 0.75rem !important;
   width: 95px;
-  height: 90px;
+  height: 80px;
   text-align: center;
-  background-color: beige;
+  background-color: #EEEEEE;
 }
 
 .reserve-past-day p {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 
@@ -173,18 +242,39 @@ select.old_day {
 .text-right input[type="submit"] {
   margin-right: -75px;
   margin-top: 5px;
+  font-size: 12px;
 }
 
 .rogin input[type="submit"] {
   margin-top: -5px;
-  margin-left: 220px;
+  margin-left: 285px;
 }
 
 .gender-container {
+  margin-left: 75px;
+  text-align: center;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  /* 各要素の間にスペースを設ける */
+  align-items: baseline;
+  gap: 20px;
+}
+
+
+.role-container {
+  margin-left: 30px;
+  gap: 7px;
+}
+
+.role-container_item {
+  margin-left: 8px;
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.role-container_item input[type="radio"] {
+  margin-right: -3px;
 }
 
 .gender-container label {
@@ -255,6 +345,10 @@ select.old_day {
   padding: 10px;
 }
 
+.table thead th {
+  background-color: #fff !important;
+}
+
 .day-blank {
   background: #D3D3D3;
 }
@@ -267,9 +361,18 @@ select.old_day {
   color: #FF0000;
 }
 
+.saturday {
+  color: blue;
+}
+
+.sunday {
+  color: red;
+}
+
 .custom-width {
   width: 90%;
   margin: -10px 50px 20px;
+  border: none !important;
 }
 
 .confirmation {
@@ -306,7 +409,7 @@ select.old_day {
 
 .reserve-calendar-td {
   width: 95px;
-  height: 95px;
+  height: 80px;
   text-align: center;
   vertical-align: middle;
 }
@@ -400,11 +503,15 @@ select.old_day {
 }
 
 .rs_text-center:nth-child(odd) {
-  background-color: lightblue;
+  background-color: #D7EEFF;
 }
 
 .rs_text-center:nth-child(even) {
   background-color: #fff;
+}
+
+.rs_text-center p {
+  vertical-align: baseline;
 }
 
 .table-styled {
@@ -416,6 +523,8 @@ select.old_day {
 .table-styled tr {
   display: flex;
   justify-content: space-between;
+  margin-top: 9px;
+  margin-left: 5px;
 }
 
 .table-styled th,
@@ -463,7 +572,6 @@ select.old_day {
 }
 
 .rs_text-center {
-  padding: 2px;
   align-items: center;
 }
 
@@ -514,8 +622,57 @@ select.old_day {
 
 /* 掲示板 */
 .sub_categories {
+  list-style-type: none;
+  /* リストのデフォルトのマーカー削除 */
+  padding: 0;
+  margin: -20px 0 0 0px;
+  /* 上部と左側にマージンを追加 */
   display: none;
+  position: relative;
 }
+
+.sub_categories li {
+  border-bottom: solid 2px gray;
+  list-style: none;
+  margin-left: 15px;
+  height: 50px;
+  padding: 3px 0;
+  position: relative;
+  align-items: center;
+}
+
+.sub_categories input {
+  max-width: 500px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  /* 不要なボーダースタイルを削除 */
+  flex-grow: 1;
+  /* 横幅を最大にする */
+  margin: 0;
+  padding: 12px 0px 0px;
+}
+
+.subcategory-item {
+  border-bottom: solid 2px black;
+}
+
+/*.main_categories */
+margin-bottom: 10px;
+border-bottom: solid 2px black;
+height: 50px;
+padding: 18px;
+
+
+margin-bottom: 10px;
+border-bottom: solid 2px black;
+height: 50px;
+padding: 18px;
+
+
+border-style: none;
+
 
 .post_create_area {
   background: #FFF;
@@ -530,6 +687,7 @@ select.old_day {
 
 .detail_container {
   background: #FFF;
+  border-radius: 10px;
 }
 
 .post_area {
@@ -581,13 +739,13 @@ select.old_day {
 }
 
 .post-btn {
-  width: 100px;
+  width: 100%;
 }
 
 /* 投稿ボタン */
 .post-btn a {
   display: inline-block;
-  width: 290px;
+  width: 100%;
   /* 親要素の幅いっぱいに広げる */
   background: #03AAD2;
   border-radius: 8px;
@@ -603,7 +761,7 @@ select.old_day {
 .post-search-box {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 290px;
   border-radius: 5px;
   padding: 5px;
   margin-left: -5px;
@@ -612,34 +770,41 @@ select.old_day {
 
 .post-input {
   flex-grow: 1;
-  /* 残りのスペースを占有 */
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px 0px 0px 8px;
   background: none;
+  font-size: 12px;
 }
 
 .post-search-btn {
-  width: 100px;
-  /* 検索ボタンの幅 */
+  width: 70px;
   padding: 5px;
-  /* ボタンの内側の余白 */
   border: none;
-  /* ボタンの枠線を削除 */
   border-radius: 0px 8px 8px 0px;
-  /* ボタンの角を丸める */
   background-color: #03AAD2;
-  /* ボタンの背景色 */
   color: white;
-  /* ボタンの文字色 */
   cursor: pointer;
-  /* マウスカーソルをポインターに変更 */
+  font-size: 12px;
 }
 
 .search-sub {
   display: grid;
   flex-direction: row;
   margin-top: 10px;
+}
+
+.search_area {
+  width: 300px;
+  /* 必要に応じて調整 */
+  max-width: 100%;
+}
+
+.text-center input[type="reset"] {
+  margin-top: 15px;
+  margin-right: 65px;
+  border: none;
+  color: #03AAD2;
 }
 
 /* 掲示板 詳細画面 */
@@ -679,12 +844,14 @@ select.old_day {
 /* 掲示板 コメント */
 .comment_container {
   background: #FFF;
+  border-radius: 10px;
 }
 
 .comment_area p,
 .comment_area input {
   font-size: 12px;
   font-weight: bold;
+  margin-left: 415px;
 }
 
 .comment_area textarea {
@@ -710,7 +877,12 @@ select.old_day {
   border-radius: 10px;
 }
 
+.category_area input {
+  width: 250px;
+}
+
 .category_box {
+  left: -15px;
   border-radius: 5px;
   padding: 3px;
   background: #999;
@@ -718,20 +890,41 @@ select.old_day {
   color: #FFF;
 }
 
+.ca-inner {
+  padding: 10px;
+}
+
+input.w-100 {
+  width: 400px;
+  /* 入力フィールドの幅を広げる */
+  /* パディングを追加して高さを調整 */
+  margin-top: 10px;
+  /* 上部マージンを追加 */
+  display: block;
+  /* ブロック要素として表示 */
+}
+
 .category_btn {
   font-size: 12px;
   border-radius: 8px;
-  padding: 0 5px;
+  padding: 0px 5px;
   margin-top: 10px;
   border: none;
   color: #FFF;
-  width: 143px;
+  width: 135px;
   height: 30px;
+}
+
+ul input[name="category_word"] {
+  display: block;
+  color: #000 !important;
+  margin: 10px 0px 0px;
 }
 
 .category-text {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .like_posts_btn {
@@ -742,28 +935,80 @@ select.old_day {
   background: #FFA500;
 }
 
-.main_categories span,
-.sub_categories li input {
+/* クリック時のスタイル */
+.check:checked+.label+.text {
+  transform: scaleY(1);
+  position: absolute;
+  top: 100px;
+  right: 0;
+  height: 265px;
+  width: 305px;
+
+}
+
+.main_categories span {
+  position: relative;
+  max-width: 500px;
   list-style: none;
   cursor: pointer;
+  font-size: 15px;
+  padding-bottom: 5px;
 }
 
-.sub_categories span {
-  color: #000;
+.mc-inner {
+  border-bottom: solid 2px gray;
 }
 
+.main_categories label {
+  left: 250px;
+  top: -20px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  width: 10px;
+  height: 10px;
+  border: 0.1em solid currentColor;
+  border-left: 0;
+  border-bottom: 0;
+  box-sizing: border-box;
+  transform: translateY(-25%) rotate(135deg);
+  position: absolute;
+
+}
+
+.main_categories label.active {
+  transform: translateY(25%) rotate(-45deg);
+}
+
+/* 掲示板　カテゴリー検索　メインカテゴリー */
 .main_categories {
-  border-bottom: 1px solid #000;
+  position: relative;
   margin-bottom: 10px;
+  max-width: 500px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding-bottom: 5px;
+
 }
+
+input[type=checkbox] {
+  appearance: none !important;
+}
+
+.category_num2 input[type=checkbox] {
+  appearance: none;
+}
+
+/* font-weight: bold;}
 
 /* ユーザー検索 */
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
   width: 930px;
-  margin: 10px auto;
-  height: 80vh;
+  margin: 0px 30px 0px 30px;
+  height: 97vh;
   overflow: scroll;
   padding: 10px;
   background: #FFF;
@@ -772,14 +1017,15 @@ select.old_day {
 
 .reserve_users_area span {
   font-size: 12px;
+  vertical-align: top;
 }
 
 .one_person {
-  margin-right: 15px;
+  margin-right: 10px;
   margin-bottom: 15px;
-  width: 205px;
-  height: 205px;
-  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.35);
 }
@@ -802,13 +1048,28 @@ select.old_day {
 }
 
 .search-type {
-  margin-top: 35px;
+  margin-top: 45px;
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.search-type-category {
+  margin-top: 10px;
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.search-type-gender {
+  margin-top: 10px;
   width: 100%;
   display: grid;
   align-items: center;
 }
 
 .selected_engineer {
+  margin-top: 10px;
   display: grid;
 }
 
@@ -821,10 +1082,13 @@ select.old_day {
   margin-left: 5px;
 }
 
+.search-btn {
+  width: 100%;
+}
+
 .search-btn input[type="submit"] {
+  margin-top: 25px;
   display: inline-block;
-  width: 250px;
-  /* 親要素の幅いっぱいに広げる */
   background: #03AAD2;
   border-radius: 8px;
   font-size: 12px;
@@ -832,15 +1096,16 @@ select.old_day {
   line-height: 3;
   color: #FFF;
   text-align: center;
-  /* テキストを中央揃え */
+  width: 220px;
 }
 
 .free_word {
+  margin-top: 15px;
   flex-grow: 1;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background: #C0C0C0;
+  background: #D3D3D3;
   width: 230px;
 }
 
@@ -849,12 +1114,15 @@ select.old_day {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background: #C0C0C0;
+  background: #D3D3D3;
   width: 110px;
 }
 
 .search_conditions {
-  margin-top: 10px;
+  margin-top: 25px;
+  border: none;
+  width: 230px;
+  border-bottom: 2px solid gray;
 }
 
 .search_conditions span {
@@ -863,16 +1131,48 @@ select.old_day {
 
 .search_conditions_inner {
   display: none;
+  max-width: 100%;
+}
+
+.user-profile {
+  margin-left: -130px;
+  margin-top: -30px;
 }
 
 .subject_edit_btn {
   font-size: 12px;
-  color: #0000FF;
+  color: #03AAD2;
   cursor: pointer;
+}
+
+.subject_inner .subject-item {
+
+  height: auto;
 }
 
 .subject_inner {
   display: none;
+  display: flex;
+  flex-wrap: wrap;
+  /* 必要に応じて次の行に折り返す */
+  gap: 20px;
+  /* アイテム間のスペース */
+}
+
+.subject-item label {
+  margin-right: 10px;
+}
+
+/* ラベルとチェックボックスの間にスペースを追加 */
+.subject-item {
+  display: flex;
+  align-items: center;
+}
+
+.life-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .main-visual {

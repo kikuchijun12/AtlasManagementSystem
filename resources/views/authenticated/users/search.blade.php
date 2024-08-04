@@ -55,21 +55,21 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 border">
+  <div class="search_area w-25 border height: 1000px;">
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest">
       <div class="">
         <div class="search-type">
           <lavel>検索</lavel>
           <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
         </div>
-        <div class="search-type">
+        <div class="search-type-category">
           <lavel>カテゴリ</lavel>
           <select form="userSearchRequest" name="category" class="common-search">
             <option value="name">名前</option>
             <option value="id">社員ID</option>
           </select>
         </div>
-        <div class="search-type">
+        <div class="search-type-category">
           <label>並び替え</label>
           <select name="updown" form="userSearchRequest" class="common-search">
             <option value="ASC">昇順</option>
@@ -79,7 +79,7 @@
         <div class="">
           <p class="m-10 search_conditions"><span>検索条件の追加</span></p>
           <div class="search_conditions_inner">
-            <div class="search-type">
+            <div class="search-type-gender">
               <label>性別</label>
               <div class="search-jender">
                 <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">

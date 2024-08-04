@@ -1,10 +1,8 @@
 @extends('layouts.sidebar')
 
 @section('content')
-TEST
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span class="bold-text">{{ $post->user->over_name }}</span><span class="ml-3 bold-text">{{ $post->user->under_name }}</span>さん</p>
@@ -33,29 +31,33 @@ TEST
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25 mr-5">
-    <div class="border m-4">
-      <div class="post-btn"><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="post-search-box">
-        <input type="text" class="post-input" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" class="post-search-btn" value="検索" form="postSearchRequest">
-      </div>
-      <input type="submit" name="like_posts" class="category_btn like_posts_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn my_posts_btn" value="自分の投稿" form="postSearchRequest">
-      <p class="category-text">カテゴリー検索</p>
-      <ul>
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span>
-              <span class="category_num{{ $category->id }}">
-                <ul class="sub_categories" style="display: none;"> @foreach($category->subCategories as $subCategory)
-                  <span><input type="submit" name="category_word" class="category_btn" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
-                    @endforeach
-                </ul>
-              </span>
-        </li>
-        @endforeach
-      </ul>
+  <div class="other_area border w-25 mr-5 p-3">
+    <div class="post-btn"><a href="{{ route('post.input') }}">投稿</a></div>
+    <div class="post-search-box">
+      <input type="text" class="post-input" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+      <input type="submit" class="post-search-btn" value="検索" form="postSearchRequest">
     </div>
+    <input type="submit" name="like_posts" class="category_btn like_posts_btn" value="いいねした投稿" form="postSearchRequest">
+    <input type="submit" name="my_posts" class="category_btn my_posts_btn" value="自分の投稿" form="postSearchRequest">
+    <p class="category-text">カテゴリー検索</p>
+    <ul>
+      @foreach($categories as $category)
+      <li class="main_categories" category_id="{{ $category->id }}">
+        <div class="mc-inner"><span>{{ $category->main_category }}</span></div>
+        <span class="category_num{{ $category->id }}">
+          <input id="check-a" type="checkbox" class="check">
+          <label class="label" for="check-a"></label>
+          <ul class="sub_categories">
+            @foreach($category->subCategories as $subCategory)
+            <li>
+              <input type="submit" name="category_word" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
+            </li>
+            @endforeach
+          </ul>
+        </span>
+      </li>
+      @endforeach
+    </ul>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
 </div>

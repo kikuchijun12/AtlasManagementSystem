@@ -29,7 +29,7 @@
         <p><a href="/logout">ログアウト</a></p>
       </div>
       <div class="name-and-img-container">
-        <img src="{{ asset('./image/calendar_hoso.png') }}">
+        <img src="{{ asset('./image/ifn1214.png') }}">
         <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
       </div>
       @can('admin_only')
@@ -38,6 +38,7 @@
         <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
       </div>
       <div class="name-and-img-container">
+        <img src="{{ asset('./image/ifn0367.png') }}">
         <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
       </div>
       @endcan
@@ -45,8 +46,11 @@
         <img src="{{ asset('./image/1052_cm_h.png') }}">
         <p><a href="{{ route('post.show') }}">掲示板</a></p>
       </div>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
-      @show
+      <div class="name-and-img-container">
+        <img src="{{ asset('./image/ifn1065.png') }}">
+        <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+        @show
+      </div>
     </div>
     <div class="main-container">
       @yield('content')

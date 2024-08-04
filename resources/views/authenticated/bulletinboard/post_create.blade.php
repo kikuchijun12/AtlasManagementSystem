@@ -40,19 +40,19 @@
   @can('admin')
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
-      <div class="">
+      <div class="ca-inner">
+        <!-- サブカテゴリー追加 -->
+        @if ($errors->has('main_category_name'))
+        <li style="font-size: 13px; color: #CC3300;">{{$errors->first('main_category_name')}}</li>
+        @endif
+
+        <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
+          <p class="m-0">メインカテゴリー</p>
+          <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
+          <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+
+        </form>
       </div>
-      <!-- サブカテゴリー追加 -->
-      @if ($errors->has('main_category_name'))
-      <li style="font-size: 13px; color: #CC3300;">{{$errors->first('main_category_name')}}</li>
-      @endif
-
-      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
-        <p class="m-0">メインカテゴリー</p>
-        <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
-        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
-
-      </form>
     </div>
     <div class="category_area mt-5 p-5">
       <div class="">
