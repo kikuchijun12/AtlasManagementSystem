@@ -7,10 +7,7 @@ $(function () {
 
     $('.subject_edit_btn').click(function () {
       $('.subject_inner').slideToggle();
-<<<<<<< HEAD
-=======
       $(this).siblings('.arrow').toggleClass('active');
->>>>>>> ad55749 (cssに関する部分を修正しました。)
     });
   });
 });

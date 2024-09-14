@@ -30,14 +30,14 @@
             <div class="" style="width:140px">
               <label class="d-block m-0 common-label" style="font-size:13px">姓</label>
               <div class="border-bottom border-primary name-border" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
+                <input type="text" style="width:160px;" class="border-0 over_name" name="over_name">
               </div>
 
             </div>
             <div class="over_name" style="width:140px">
               <label class=" d-block m-0 under_name-label" style="font-size:13px">名</label>
-              <div class="border-bottom border-primary under_name-border" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
+              <div class="border-bottom border-primary-n" style="width:160px;">
+                <input type="text" style="width:160px;" class="border-0 under_name" name="under_name">
               </div>
             </div>
           </div>
@@ -51,13 +51,13 @@
             <div class="" style="width:140px">
               <label class="d-block m-0 common-label" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary name-border" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
+                <input type="text" style="width:160px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
-            <div class="over_name2" style="width:140px">
+            <div class="over_name" style="width:140px">
               <label class="d-block m-0 under_name-label" style="font-size:13px">メイ</label>
-              <div class="border-bottom border-primary  under_name-border" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
+              <div class="border-bottom border-primary-n  under_name-border" style="width:160px;">
+                <input type="text" style="width:160px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
             </div>
           </div>

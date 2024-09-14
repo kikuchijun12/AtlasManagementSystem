@@ -4,23 +4,18 @@ $(function () {
 
     // サブカテゴリの要素を取得
     var $subCategories = $('.category_num' + category_id).find('.sub_categories');
+    // すべてのサブカテゴリーを閉じる
+    $('.sub_categories').removeClass('show');
+
+    // 矢印もすべてリセット
+    $('.arrow').removeClass('active');
 
     // サブカテゴリのスライドトグル
-<<<<<<< HEAD
-    $subCategories.slideToggle();
-    var $label = $(this).find('.label');
-
-
-    $label.toggleClass('active');
-
-    // 'active' クラスがある場合とない場合のスタイルを設定
-=======
     $subCategories.toggleClass('show');
 
     // 矢印の回転部分（クリックされたメインカテゴリの矢印のみ操作）
     var $arrow = $(this).find('.arrow');
     $arrow.toggleClass('active');
->>>>>>> ad55749 (cssに関する部分を修正しました。)
   });
 });
 
