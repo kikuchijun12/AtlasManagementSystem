@@ -43,10 +43,11 @@
     <ul>
       @foreach($categories as $category)
       <li class="main_categories" category_id="{{ $category->id }}">
-        <div class="mc-inner"><span>{{ $category->main_category }}</span></div>
+        <div class="mc-inner">
+          <span>{{ $category->main_category }}</span>
+        </div>
+        <span class="arrow"></span>
         <span class="category_num{{ $category->id }}">
-          <input id="check-a" type="checkbox" class="check">
-          <label class="label" for="check-a"></label>
           <ul class="sub_categories">
             @foreach($category->subCategories as $subCategory)
             <li>

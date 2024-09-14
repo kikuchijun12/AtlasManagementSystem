@@ -16,6 +16,7 @@
       </div>
       <div class="">
         @can('admin')
+<<<<<<< HEAD
         <span class="subject_edit_btn">選択科目の登録へ</span>
         <form action="{{ route('user.edit') }}" method="post">
           <div class="subject_inner" style="display: none;">
@@ -29,6 +30,24 @@
           </div>
           <input type="hidden" name="user_id" value="{{ $user->id }}">
           {{ csrf_field() }}
+=======
+        <div class="subject_edit">
+          <span class="subject_edit_btn">選択科目の登録</span>
+          <span class="arrow"></span>
+          <form action="{{ route('user.edit') }}" method="post">
+        </div>
+        <div class="subject_inner" style="display: none;">
+          @foreach($subject_lists as $subject_list)
+          <div class="subject-item">
+            <label>{{ $subject_list->subject }}</label>
+            <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+          </div>
+          @endforeach
+          <input type="submit" value="登録" class="btn btn-primary">
+        </div>
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
+        {{ csrf_field() }}
+>>>>>>> ad55749 (cssに関する部分を修正しました。)
         </form>
         @endcan
       </div>

@@ -54,7 +54,7 @@
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
-            <div class="over_name" style="width:140px">
+            <div class="over_name2" style="width:140px">
               <label class="d-block m-0 under_name-label" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary  under_name-border" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">

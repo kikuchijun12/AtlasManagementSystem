@@ -14,6 +14,7 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
+
 <body>
   <h5 class="atlas"><img src="{{ asset('./image/atlas-black.png') }}"></h5>
   <form action="{{ route('loginPost') }}" method="POST">

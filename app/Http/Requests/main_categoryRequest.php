@@ -28,13 +28,13 @@ class main_categoryRequest extends FormRequest
             //
         ];
     }
-        public function messages()
+    public function messages()
     {
         return [
-        'main_category_name.required' => '入力必須です。',
-        'main_category_name.unique' => '既に存在するメインカテゴリーです。',
-        'main_category_name.max:100' => '100文字以下にして下さい。'
+            'main_category_name.required' => '入力必須です。',
+            'main_category_name.unique' => '同じメインカテゴリーが既に存在します。',
+            'main_category_name.max:100' => '100文字以下にして下さい。'
 
-    ];
+        ];
     }
 }

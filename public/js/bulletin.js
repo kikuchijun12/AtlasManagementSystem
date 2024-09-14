@@ -6,6 +6,7 @@ $(function () {
     var $subCategories = $('.category_num' + category_id).find('.sub_categories');
 
     // サブカテゴリのスライドトグル
+<<<<<<< HEAD
     $subCategories.slideToggle();
     var $label = $(this).find('.label');
 
@@ -13,6 +14,13 @@ $(function () {
     $label.toggleClass('active');
 
     // 'active' クラスがある場合とない場合のスタイルを設定
+=======
+    $subCategories.toggleClass('show');
+
+    // 矢印の回転部分（クリックされたメインカテゴリの矢印のみ操作）
+    var $arrow = $(this).find('.arrow');
+    $arrow.toggleClass('active');
+>>>>>>> ad55749 (cssに関する部分を修正しました。)
   });
 });
 
