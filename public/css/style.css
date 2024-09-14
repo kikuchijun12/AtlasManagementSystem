@@ -755,7 +755,8 @@ select.old_day {
   border-bottom: solid 2px black;
 }
 
-/*.main_categories */
+/* メインカテゴリーレイアウト　 */
+/*.main_categories
 margin-bottom: 10px;
 border-bottom: solid 2px black;
 height: 50px;
@@ -768,7 +769,7 @@ height: 50px;
 padding: 18px;
 
 
-border-style: none;
+border-style: none;*/
 
 
 .post_create_area {
