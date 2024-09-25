@@ -61,6 +61,27 @@ li {
   width: 370px;
 }
 
+/* バリデーションメッセージ */
+.validation-container {
+  margin-bottom: -7px;
+  margin-left: 35px;
+}
+
+.validation-container-name {
+  margin-bottom: -15px !important;
+  margin-left: 35px;
+}
+
+.validation-container-birthdate {
+  margin-left: -84px !important;
+}
+
+.validation-error {
+  font-size: 12px;
+  color: #CC3300;
+  margin-bottom: -3px;
+}
+
 .over_name {
   margin-left: 87px;
 }
@@ -143,6 +164,7 @@ li {
 
 .rogin-btn1 {
   margin-bottom: -5px;
+  margin-top: -25px !important;
 }
 
 .rogin-btn1 a {
@@ -220,7 +242,7 @@ select.old_year {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 100px;
+  width: 110px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -234,7 +256,7 @@ select.old_month {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 100px;
+  width: 110px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -248,7 +270,7 @@ select.old_day {
   /* 既存の枠線を消す */
   border-bottom: 2px solid #33CCFF;
   /* 青の下線を追加 */
-  width: 100px;
+  width: 110px;
   padding: 5px;
   /* パディングを追加して下線からのスペースを確保 */
   font-size: 13px;
@@ -258,8 +280,8 @@ select.old_day {
 }
 
 .rogin-register input[type="submit"] {
-  margin-right: 15px !important;
-  margin-top: -50px !important;
+  margin-right: 75px !important;
+  margin-top: -65px !important;
 }
 
 .reserve_detail {}

@@ -2,16 +2,15 @@ $(function () {
   $('.main_categories').click(function () {
     var category_id = $(this).attr('category_id'); // 'category_id'を取得
 
-    // サブカテゴリの要素を取得
+    // すべてのサブカテゴリを閉じる
+    $('.sub_categories').not($('.category_num' + category_id).find('.sub_categories')).slideUp();
+
+    // 矢印の回転をすべてリセット
+    $('.arrow').not($(this).find('.arrow')).removeClass('active');
+
+    // クリックされたメインカテゴリのサブカテゴリをトグル（開閉する）
     var $subCategories = $('.category_num' + category_id).find('.sub_categories');
-    // すべてのサブカテゴリーを閉じる
-    $('.sub_categories').removeClass('show');
-
-    // 矢印もすべてリセット
-    $('.arrow').removeClass('active');
-
-    // サブカテゴリのスライドトグル
-    $subCategories.toggleClass('show');
+    $subCategories.slideToggle();
 
     // 矢印の回転部分（クリックされたメインカテゴリの矢印のみ操作）
     var $arrow = $(this).find('.arrow');
