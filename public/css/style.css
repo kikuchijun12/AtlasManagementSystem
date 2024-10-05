@@ -29,8 +29,8 @@ li {
 
 /* 新規登録(7/17に調整) */
 .login-main {
-  position: absolute;
-  top: 180px;
+  /* position: absolute;
+  top: 180px; */
   border-radius: 8px;
   box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.35);
   background-color: #fff;

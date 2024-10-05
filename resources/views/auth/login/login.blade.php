@@ -16,9 +16,11 @@
 
 
 <body>
-  <h5 class="atlas"><img src="{{ asset('./image/atlas-black.png') }}"></h5>
+  <!-- <h5 class="atlas"></h5> -->
   <form action="{{ route('loginPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
+    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center; flex-direction: column;
+">
+      <img src="{{ asset('./image/atlas-black.png') }}" style="width:200px; margin-bottom:20px;">
       <div class="login-main border vh-50">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0 bold-label" style="font-size:13px;">メールアドレス</label>
